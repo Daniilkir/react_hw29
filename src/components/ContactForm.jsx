@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { filterAction } from "../redux/task/action";
 import ContactList from "./ContactList";
 
 const ContactForm = () => {
@@ -8,7 +7,7 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const handleFilter = (e) => {
-    dispatch(filterAction(e.target.value));
+    dispatch({ type: "FILTER", payload: e.target.value });
   };
 
   const handleAddContact = (e) => {
@@ -37,6 +36,7 @@ const ContactForm = () => {
       <input
         type="text"
         placeholder="Пошук по імені"
+        value={filter}
         onChange={handleFilter}
       />
 
